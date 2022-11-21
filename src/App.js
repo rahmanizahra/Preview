@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import React from 'react';
+import Editor from './Editor';
+import Preview from './Preview';
 import './App.css';
 
 function App() {
+  const [message, setMessage] = React.useState('Type something');
+  
+    
+  
+  const handleMessageChange = event => {
+    // 👇️ access textarea value
+    setMessage(event.target.value);
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App" style={{backgroundColor:" rgb(151, 209, 197)"}}>
+      <Editor 
+      message={message}
+      handleMessageChange={handleMessageChange}
+      />
+      <Preview
+      message={message}
+
+      />
+      
     </div>
   );
 }
